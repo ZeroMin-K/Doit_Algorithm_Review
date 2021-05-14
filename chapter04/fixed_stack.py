@@ -30,3 +30,27 @@ class FixedStack:
     def is_full(self) -> bool:
         # 스택이 가득차 있는지 판단
         return self.ptr >= self.capacity 
+    
+        def push(self, value: Any) -> None:
+        # 스택에 value 푸시
+        if self.is_full():
+            raise FixedStack.Full
+        self.stk[self.ptr] = value
+        self.ptr += 1
+
+    def pop(self) -> Any:
+        # 스택에서 데이터 팝
+        if self.is_empty():
+            raise FixedStack.Empty
+        self.ptr -= 1
+        return self.stk[self.ptr]
+
+    def peek(self) -> Any:
+        # 스택에서 데이터 피크
+        if self.is_empty():
+            raise FixedStack.Empty
+        return self.stk[self.ptr -1]
+
+    def clear(self) -> None:
+        # 스택을 비움
+        self.ptr = 0
