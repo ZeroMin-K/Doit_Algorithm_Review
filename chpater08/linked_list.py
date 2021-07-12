@@ -1,0 +1,43 @@
+# 포인터로 연결 리스트 구현 
+
+from __future__ import annotations
+from typing import Any, Type
+
+class Node:
+    # 연결리스트용 노드 클래스 
+
+    def __init__(self, data: Any = None, next: Node = None):
+        # 초기화 
+        self.data = data
+        self.next = next
+
+class LinkedList:
+    # 연결리스트 클래스 
+
+    def __init__(self) -> None:
+        # 초기화
+        self.no = 0                 # 노드의 개수 
+        self.head= None             # 머리 노드
+        self.current = None         # 주목 노드
+
+    def __len__(self) -> int:
+        # 연결리스트의 노드 개수 반환
+        return self.no 
+
+    def search(self, data: Any) -> int:
+        # data와 값이 같은 노드 검색
+        cnt = 0
+        ptr = self.head
+        while ptr is not None:
+            if ptr.data == data:
+                self.current = ptr
+                return cnt
+            cnt += 1
+            ptr = ptr.next
+        return -1
+
+    def __continas__(self, data: Any) -> bool:
+        # 연결리스트에 data가 포함되어 있는지 확인
+        return self.search(data) >= 0
+
+    
